@@ -1,0 +1,77 @@
+﻿<vertical
+  child-control-height='false'>
+  <horizontal
+    bg='panel-top'
+    pad-left='15' 
+    pad-right='15'
+    horizontal-fit='PreferredSize'>
+    <text 
+      text='設定'
+      align='Center' 
+      font-size='6' />
+  </horizontal>
+
+  <horizontal>
+    <page-button
+      pref-height='8'
+      pref-width='8'
+      on-click='OnLeft'
+      direction='Left' />
+    <vertical>
+      <horizontal
+        child-expand-width='false'
+        pref-height='4'
+        pref-width='60'
+        child-align='LowerLeft' >
+        <text
+          id='preview-title'
+          font-size='4'
+          font-align='Bottom' />
+        <text
+          text='__'
+          font-size='1'
+          font-color='#00000000' />
+        <text
+          id='preview-subtitle'
+          font-size='3'
+          font-align='Bottom' />
+      </horizontal>
+      <horizontal
+        child-expand-width='false'
+        pref-height='2.5'
+        pref-width='60'>
+        <text
+          id='preview-author'
+          font-size='2.5'
+          pref-height='2.5' 
+          font-align='Left' />
+        <text
+          text='_'
+          font-size='1'
+          font-color='#00000000' />
+        <text
+          id='preview-mapper'
+          font-size='2.5'
+          pref-height='2.5'
+          font-color='#acacac'
+          font-align='Left'  />
+      </horizontal>
+    </vertical>
+    <page-button
+      pref-height='8'
+      pref-width='8'
+      on-click='OnRight' 
+      direction='Right' />
+  </horizontal>
+
+  <bool-setting
+    value='IsAutoModify'
+    text='自動実行'
+    apply-on-change='true'
+    on-change='OnChangedIsAutoModify'
+    hover-hint='SongCoreが曲を読み込んだ後に自動でタイトルを修正する' />
+  <button
+    id='ManualButton'
+    on-click='OnClickManual'
+    text='手動実行' />
+</vertical>

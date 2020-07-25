@@ -1,0 +1,14 @@
+﻿<vertical>
+  <vertical
+    pref-width='100'
+    child-expand-width='false'>
+    <text
+      font-size='4.3'
+      word-wrapping='true'
+      font-align='Left'
+      text='このMODはJapanSaberで取得したプレイリストをもとに日本語化された情報をゲーム内のタイトル等に反映されせるためのものです。まずは、JapanSaberからプレイリストを作成してダウンロードしてください。'></text>
+  </vertical>
+  <button 
+    on-click='OnOpen'
+    text='JapanSaberを開く'></button>
+</vertical>

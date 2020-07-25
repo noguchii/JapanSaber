@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A4093CA-8B08-436C-AED6-0622BE269EEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JapanSaber</RootNamespace>
+    <AssemblyName>JapanSaber</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <DebugType>portable</DebugType>
+    <BeatSaberDir>$(ProjectDir)Refs</BeatSaberDir>
+    <BeatSaberReferences>$(BeatSaberDir)</BeatSaberReferences>
+    <ReferencePath>$(SolutionDir)Refs</ReferencePath>
+    <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
+    <PathMap>$(AppOutputBase)=X:\$(AssemblyName)\</PathMap>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(DefineConstants.Contains('CIBuild')) OR '$(NCrunch)' == '1'">
+    <DisableCopyToPlugins>True</DisableCopyToPlugins>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NCrunch)' == '1'">
+    <DisableCopyToPlugins>True</DisableCopyToPlugins>
+    <DisableZipRelease>True</DisableZipRelease>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BSML">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Plugins\BSML.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BS_Utils">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Plugins\BS_Utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SongCore">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Plugins\SongCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Main">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\Main.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HMLib">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\HMLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HMUI">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\HMUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IPA.Loader">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\IPA.Loader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\SongsStore.cs" />
+    <Compile Include="Configuration\Playlist.cs" />
+    <Compile Include="Configuration\SongInfos.cs" />
+    <Compile Include="Modification\Modifer.cs" />
+    <Compile Include="Modification\ModificationFormat.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuration\UI\SettingsController.cs" />
+    <Compile Include="Configuration\UI\AboutController.cs" />
+    <Compile Include="Configuration\UI\JapanSaberFlowCoordinator.cs" />
+    <Compile Include="Configuration\UI\JapanSaberMenuUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BuildTargets.targets" />
+    <None Include=".gitignore" />
+    <EmbeddedResource Include="Configuration\UI\BSML\About.bsml" />
+    <EmbeddedResource Include="Configuration\UI\BSML\Settings.bsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Refs\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="BuildTargets.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetFileName)" "D:\Steam\steamapps\common\Beat Saber\Plugins"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
