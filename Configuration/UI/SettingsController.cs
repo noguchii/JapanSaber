@@ -154,7 +154,7 @@ namespace JapanSaber.Configuration.UI
             IsExecuting = true;
             try
             {
-                var modifer = Plugin.Instance.Modifer;
+                var modifer = Plugin.Instance.Modifier;
                 modifer.Type = Config.Instance.GetViewType();
                 modifer.ModifySongs(true);
                 ManualButton.SetButtonText("完了");

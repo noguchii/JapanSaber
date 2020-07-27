@@ -5,7 +5,7 @@ using JapanSaber.Configuration;
 
 namespace JapanSaber.Modification
 {
-    public class Modifer
+    public class SongInfosModifier
     {
         Dictionary<string, SongInfos> SongsDictionary;
 
@@ -15,8 +15,6 @@ namespace JapanSaber.Modification
         public void ModifySongs(bool isForce = false)
         {
             Logger.Debug("ModifySongs");
-
-            Type = Config.Instance.GetViewType();
 
             try
             {
@@ -78,11 +76,11 @@ namespace JapanSaber.Modification
         {
             switch (Type)
             {
-                case ModificationFormat.TitleAuthorProductMapper:
-                case ModificationFormat.TitleProductAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorProduct:
-                case ModificationFormat.TitleSubtitleProductMapper:
+                case ModificationFormat.Title_Author_Product_Mapper:
+                case ModificationFormat.Title_Product_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Product:
+                case ModificationFormat.Title_Subtitle_Product_Mapper:
                 default:
                     field.SetValue(level, infos.Title ?? "");
                     return;
@@ -92,15 +90,15 @@ namespace JapanSaber.Modification
         {
             switch (Type)
             {
-                case ModificationFormat.TitleAuthorProductMapper:
+                case ModificationFormat.Title_Author_Product_Mapper:
                     field.SetValue(level, info.Author ?? "");
                     return;
-                case ModificationFormat.TitleProductAuthorMapper:
+                case ModificationFormat.Title_Product_Author_Mapper:
                     field.SetValue(level, info.Product ?? "");
                     return;
-                case ModificationFormat.TitleSubtitleAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorProduct:
-                case ModificationFormat.TitleSubtitleProductMapper:
+                case ModificationFormat.Title_Subtitle_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Product:
+                case ModificationFormat.Title_Subtitle_Product_Mapper:
                     field.SetValue(level, info.Subtitle ?? "");
                     return;
                 default:
@@ -112,13 +110,13 @@ namespace JapanSaber.Modification
         {
             switch (Type)
             {
-                case ModificationFormat.TitleAuthorProductMapper:
-                case ModificationFormat.TitleSubtitleProductMapper:
+                case ModificationFormat.Title_Author_Product_Mapper:
+                case ModificationFormat.Title_Subtitle_Product_Mapper:
                     field.SetValue(level, info.Product ?? "");
                     return;
-                case ModificationFormat.TitleProductAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorProduct:
+                case ModificationFormat.Title_Product_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Product:
                 default:
                     field.SetValue(level, info.Author ?? "");
                     return;
@@ -128,13 +126,13 @@ namespace JapanSaber.Modification
         {
             switch (Type)
             {
-                case ModificationFormat.TitleSubtitleAuthorProduct:
+                case ModificationFormat.Title_Subtitle_Author_Product:
                     field.SetValue(level, info.Product ?? "");
                     return;
-                case ModificationFormat.TitleAuthorProductMapper:
-                case ModificationFormat.TitleProductAuthorMapper:
-                case ModificationFormat.TitleSubtitleAuthorMapper:
-                case ModificationFormat.TitleSubtitleProductMapper:
+                case ModificationFormat.Title_Author_Product_Mapper:
+                case ModificationFormat.Title_Product_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Author_Mapper:
+                case ModificationFormat.Title_Subtitle_Product_Mapper:
                     return;
                 default:
                     return;

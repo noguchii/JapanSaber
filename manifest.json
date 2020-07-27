@@ -13,7 +13,6 @@
     "BeatSaberMarkupLanguage": "^1.3.2",
     "SongCore": "^2.9.6",
   },
-  "after": ["SongCore"],
   "features": [],
   "links": {
       "project-source": "https://github.com/noguchii/JapanSaber",

@@ -1,6 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using IPA;
 using JapanSaber.Configuration;
+using UnityEngine;
+using System;
+using TMPro;
+using UnityEngine.TextCore.LowLevel;
+using JapanSaber.Modification;
 
 namespace JapanSaber
 {
@@ -8,7 +14,7 @@ namespace JapanSaber
     [Plugin(RuntimeOptions.SingleStartInit)]
     public class Plugin
     {
-        public Modification.Modifer Modifer;
+        public Modification.SongInfosModifier Modifier;
         internal static Plugin Instance { get; private set; }
         public static string Name => "JapanSaber";
        
@@ -34,10 +40,13 @@ namespace JapanSaber
             Logger.Debug("OnApplicationStart");
 
 
-            Modifer = new Modification.Modifer();
+            Modifier = new SongInfosModifier();
 
             SongCore.Loader.SongsLoadedEvent += Loader_SongsLoadedEvent;
             Configuration.UI.JapanSaberMenuUI.Create();
+
+            FontsModifier.ClearDefectiveFonts();
+
         }
 
         private void Loader_SongsLoadedEvent(SongCore.Loader loader,
@@ -47,7 +56,8 @@ namespace JapanSaber
 
             if (!Config.Instance.IsAutoModification) return;
 
-            Modifer.ModifySongs(false);
+            Modifier.Type = Config.Instance.GetViewType();
+            Modifier.ModifySongs(false);
         }
 
 

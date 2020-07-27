@@ -80,7 +80,7 @@ namespace JapanSaber.Configuration
                         // 不備がありそうなデータは使わない（プレイリスト編集ソフトで後から追加された曲とか）
                         if (string.IsNullOrWhiteSpace(s.hash) || string.IsNullOrWhiteSpace(s.Title))
                         {
-                            Logger.IPALogger.Notice($"Invalid Infos: {s.MapKey} {s.Title}");
+                            Logger.IPALogger.Notice($"Invalid Infos: {s.hash} {s.MapKey} {s.Title}");
                             continue;
                         }
 
