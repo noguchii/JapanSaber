@@ -3,8 +3,8 @@
   "id": "JapanSaber",
   "name": "JapanSaber",
   "author": "noguchii",
-  "description": "タイトルなどを日本語化するためのMOD. Localization for JP.",
-  "version": "0.2.0",
+  "description": "曲名などを日本語化するためのMOD. Localization for JP.",
+  "version": "0.3.0",
   "description": "",
   "gameVersion": "1.10.0",
   "dependsOn": {

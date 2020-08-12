@@ -1,11 +1,11 @@
 ﻿using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.MenuButtons;
 
-namespace JapanSaber.Configuration.UI
+namespace JapanSaber.Configuration
 {
-    public static class JapanSaberMenuUI
+    public static class ConfigMenuUI
     {
-        private static JapanSaberFlowCoordinator flowCoordinator;
+        private static ConfigFlowCoordinator flowCoordinator;
 
         public static void Create()
         {
@@ -19,7 +19,7 @@ namespace JapanSaber.Configuration.UI
 
             if (flowCoordinator == null)
             {
-                flowCoordinator = BeatSaberUI.CreateFlowCoordinator<JapanSaberFlowCoordinator>();
+                flowCoordinator = BeatSaberUI.CreateFlowCoordinator<ConfigFlowCoordinator>();
             }
 
             BeatSaberUI.MainFlowCoordinator.PresentFlowCoordinator(flowCoordinator, null, false, false);

@@ -4,11 +4,11 @@ using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using HMUI;
 
-namespace JapanSaber.Configuration.UI
+namespace JapanSaber.Configuration
 {
     public class AboutController : ViewController
     {
-        public  string ResourceName => "JapanSaber.Configuration.UI.BSML.About.bsml";
+        public  string ResourceName => "JapanSaber.Configuration.BSML.About.bsml";
 
         protected override void DidActivate(bool firstActivation, ActivationType activationType)
         {
@@ -19,7 +19,7 @@ namespace JapanSaber.Configuration.UI
                 try
                 {
                     var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                    var content = Utilities.GetResourceContent(assembly, ResourceName);
+                    var content = BeatSaberMarkupLanguage.Utilities.GetResourceContent(assembly, ResourceName);
                     BSMLParser.instance.Parse(content, gameObject, this);
                 }
                 catch (Exception ex)

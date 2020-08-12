@@ -2,9 +2,9 @@
 using HMUI;
 using BeatSaberMarkupLanguage;
 
-namespace JapanSaber.Configuration.UI
+namespace JapanSaber.Configuration
 {
-    public class JapanSaberFlowCoordinator : FlowCoordinator
+    public class ConfigFlowCoordinator : FlowCoordinator
     {
         public SettingsController Settings;
         public AboutController About;
@@ -44,7 +44,7 @@ namespace JapanSaber.Configuration.UI
         protected override void BackButtonWasPressed(ViewController controller)
         {
             BeatSaberUI.MainFlowCoordinator.DismissFlowCoordinator(this, null, false);
-            Config.Instance.OnChanged();
+            JSConfig.Instance.Save();
         }
     }
 }

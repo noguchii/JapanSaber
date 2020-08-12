@@ -47,6 +47,9 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Libs\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="BSML">
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Plugins\BSML.dll</HintPath>
       <Private>False</Private>
@@ -54,6 +57,12 @@
     <Reference Include="BS_Utils">
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Plugins\BS_Utils.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="HMRendering">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\HMRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Imazen.WebP, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Imazen.WebP.10.0.1\lib\net45\Imazen.WebP.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,6 +74,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -93,9 +105,15 @@
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
@@ -116,6 +134,9 @@
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VRModule">
       <HintPath>..\..\..\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.VRModule.dll</HintPath>
       <Private>False</Private>
@@ -123,20 +144,35 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\SongsStore.cs" />
-    <Compile Include="Configuration\Playlist.cs" />
-    <Compile Include="Configuration\SongInfos.cs" />
+    <Compile Include="HarmonyPatches\AnnotatedBeatmapLevelCollectionTableCellPatch.cs" />
+    <Compile Include="HarmonyPatches\LevelListTableCell.cs" />
+    <Compile Include="HarmonyPatches\TabBarViewControllerPatch.cs" />
+    <Compile Include="Modification\SongsStore.cs" />
+    <Compile Include="SerializableData\SearchResultBeatmapLevelData.cs" />
+    <Compile Include="SerializableData\SearchResult.cs" />
+    <Compile Include="SerializableData\Playlist.cs" />
+    <Compile Include="Objects\SimpleBeatmapCharacteristicSO.cs" />
+    <Compile Include="Objects\SimpleBeatmapData.cs" />
+    <Compile Include="SerializableData\SongNames.cs" />
     <Compile Include="Modification\FontsModifier.cs" />
-    <Compile Include="Modification\SongInfosModifier.cs" />
-    <Compile Include="Modification\ModificationFormat.cs" />
+    <Compile Include="Modification\SongNamesModifier.cs" />
+    <Compile Include="Modification\DisplayFormat.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\JSConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Configuration\UI\SettingsController.cs" />
-    <Compile Include="Configuration\UI\AboutController.cs" />
-    <Compile Include="Configuration\UI\JapanSaberFlowCoordinator.cs" />
-    <Compile Include="Configuration\UI\JapanSaberMenuUI.cs" />
+    <Compile Include="Configuration\SettingsController.cs" />
+    <Compile Include="Configuration\AboutController.cs" />
+    <Compile Include="Configuration\ConfigFlowCoordinator.cs" />
+    <Compile Include="Configuration\ConfigMenuUI.cs" />
+    <Compile Include="SerializableData\JapanSaberCollectionData.cs" />
+    <Compile Include="Search\IAsyncDataSource.cs" />
+    <Compile Include="Search\RecommendLevelCollection.cs" />
+    <Compile Include="Search\WebRequestClient.cs" />
+    <Compile Include="Objects\SimpleBeatmapLevelCollection.cs" />
+    <Compile Include="Search\SearchLevelCollection.cs" />
+    <Compile Include="Search\SearchResultBeatmapLevel.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
@@ -144,12 +180,34 @@
   <ItemGroup>
     <None Include="BuildTargets.targets" />
     <None Include=".gitignore" />
-    <EmbeddedResource Include="Configuration\UI\BSML\About.bsml" />
-    <EmbeddedResource Include="Configuration\UI\BSML\Settings.bsml" />
+    <EmbeddedResource Include="Configuration\BSML\About.bsml" />
+    <EmbeddedResource Include="Configuration\BSML\Settings.bsml" />
+    <None Include="Documents\JapanSaberCollection.md" />
+    <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Refs\" />
+    <Folder Include="Screenshots\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NoCover.png" />
+    <EmbeddedResource Include="Resources\DefaultCollectionData.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Anime.png" />
+    <EmbeddedResource Include="Resources\Game.png" />
+    <EmbeddedResource Include="Resources\IdleM%40ster.png" />
+    <EmbeddedResource Include="Resources\Indie.png" />
+    <EmbeddedResource Include="Resources\Major.png" />
+    <EmbeddedResource Include="Resources\Recommend.png" />
+    <EmbeddedResource Include="Resources\Tohou.png" />
+    <EmbeddedResource Include="Resources\VOCALOID.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\libwebp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="BuildTargets.targets" />

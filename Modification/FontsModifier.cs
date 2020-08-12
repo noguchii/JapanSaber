@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore;
-using UnityEngine.TextCore.LowLevel;
 
-namespace JapanSaber
+namespace JapanSaber.Modification
 {
     public static class FontsModifier
     {
@@ -29,14 +22,14 @@ namespace JapanSaber
 
                 // 中国語フォントが使われているため、日本語の漢字が中途半端に置き換わっている
                 // 全て削除したらWindows標準フォント（游ゴシック）が使われているはず？
+                // ➡　途中で明朝とか混ざりだした、勝手に自動生成している？
 
                 // SourceHanSansCN-Bold-SDF-Common-1(2k)
                 // SourceHanSansCN-Bold-SDF-Common-2(2k)
                 // SourceHanSansCN-Bold-SDF-Uncommon(2k)
-
+              
                 foreach (var f in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
                 {
-                    // Except defaut font of Beat Saber
                     if (f.name == "Teko-Medium SDF No Glow")
                     {
                         f.fallbackFontAssetTable.Clear();

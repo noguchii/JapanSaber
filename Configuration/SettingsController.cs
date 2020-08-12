@@ -4,12 +4,13 @@ using HMUI;
 using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using UnityEngine.UI;
+using JapanSaber.Modification;
 
-namespace JapanSaber.Configuration.UI
+namespace JapanSaber.Configuration
 {
     public class SettingsController : ViewController
     {
-        public string ResourceName => "JapanSaber.Configuration.UI.BSML.Settings.bsml";
+        public string ResourceName => "JapanSaber.Configuration.BSML.Settings.bsml";
 
         /*
         TitleSubtitleAuthorMapper = 0,
@@ -25,18 +26,19 @@ namespace JapanSaber.Configuration.UI
             Tuple.Create("タイトル", " サブタイトル", "原作", " [マッパー]"),
             Tuple.Create("タイトル", " 原作", "アーティスト", " [マッパー]"),
             Tuple.Create("タイトル", " サブタイトル", "アーティスト", " [原作]"),
+            Tuple.Create("(Song Name)", " (Song Subname)", "(Artist)", " (Mapper)"),
         };
         protected void Awake()
         {
-            IsAutoModify = Config.Instance.IsAutoModification;
-            SelectedViewTypeIndex = Config.Instance.ViewType;
+            IsAutoModify = JSConfig.Instance.IsAutoModification;
+            SelectedViewTypeIndex = JSConfig.Instance.ViewType;
         }
 
         [UIAction("#post-parse")]
         public void OnParsed()
         {
-            IsAutoModify = Config.Instance.IsAutoModification;
-            SelectedViewTypeIndex = Config.Instance.ViewType;
+            IsAutoModify = JSConfig.Instance.IsAutoModification;
+            SelectedViewTypeIndex = JSConfig.Instance.ViewType;
 
             UpdatePreview();
         }
@@ -50,7 +52,7 @@ namespace JapanSaber.Configuration.UI
                 try
                 {
                     var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                    var content = Utilities.GetResourceContent(assembly, ResourceName);
+                    var content = BeatSaberMarkupLanguage.Utilities.GetResourceContent(assembly, ResourceName);
                     BSMLParser.instance.Parse(content, gameObject, this);
                 }
                 catch (Exception ex)
@@ -59,13 +61,14 @@ namespace JapanSaber.Configuration.UI
                 }
             }
         }
+
         public void OnChanged()
         {
             Logger.Debug($"OnChanged {IsAutoModify}, {SelectedViewTypeIndex}");
 
-            Config.Instance.IsAutoModification = IsAutoModify;
-            Config.Instance.ViewType = SelectedViewTypeIndex;
-            Config.Instance.OnChanged();
+            JSConfig.Instance.IsAutoModification = IsAutoModify;
+            JSConfig.Instance.ViewType = SelectedViewTypeIndex;
+            JSConfig.Instance.Save();
 
             ResetManualButton();
         }
@@ -141,7 +144,7 @@ namespace JapanSaber.Configuration.UI
         
         public void ResetManualButton()
         {
-            ManualButton.SetButtonText("手動実行");
+            ManualButton.SetButtonText("Manual Update");
             IsExecuting = false;
         }
 
@@ -154,10 +157,9 @@ namespace JapanSaber.Configuration.UI
             IsExecuting = true;
             try
             {
-                var modifer = Plugin.Instance.Modifier;
-                modifer.Type = Config.Instance.GetViewType();
-                modifer.ModifySongs(true);
-                ManualButton.SetButtonText("完了");
+                SongNamesModifier.ModifySongCoreStore(JSConfig.Instance.GetViewType(), true);
+
+                ManualButton.SetButtonText("Complete");
             }
             catch (Exception ex)
             {

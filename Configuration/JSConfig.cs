@@ -8,14 +8,15 @@ using Newtonsoft.Json;
 
 namespace JapanSaber.Configuration
 {
-    [Serializable]
-    public class Config
+    [JsonObject]
+    public class JSConfig
     {
         private static string DefaultConfigPath =>
             Path.Combine(Environment.CurrentDirectory, "UserData", $"{Plugin.Name}.json");
-        [NonSerialized]
-        private static Config _Instance;
-        internal static Config Instance
+
+        [JsonIgnore]
+        private static JSConfig _Instance;
+        internal static JSConfig Instance
         {
             get
             {
@@ -26,23 +27,19 @@ namespace JapanSaber.Configuration
                 return _Instance;
             }
         }
-
-        public Config() { }
-
-        [SerializeField]
-        public int ViewType = 0;
-        [SerializeField]
-        public bool IsAutoModification = true;
-
-        [NonSerialized]
+        [JsonIgnore]
         private string ConfigPath;
 
-        public ModificationFormat GetViewType()
+        public bool IsExceptLowRating { get; set; } = false;
+        public int ViewType { get; set; } = 0;
+        public bool IsAutoModification { get; set; } = true;
+
+        public DisplayFormat GetViewType()
         {
-            return (ModificationFormat)ViewType;
+            return (DisplayFormat)ViewType;
         }
 
-        public void OnChanged()
+        public void Save()
         {
             try
             {
@@ -57,18 +54,18 @@ namespace JapanSaber.Configuration
             }
         }
 
-        private static Config Load(string path)
+        private static JSConfig Load(string path)
         {
             try
             {
-                var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(path));
+                var config = JsonConvert.DeserializeObject<JSConfig>(File.ReadAllText(path));
                 config.ConfigPath = path;
                 Logger.Debug("Coinfig loaded form file");
                 return config;
             }
             catch (Exception ex)
             {
-                var config = new Config() {
+                var config = new JSConfig() {
                     ConfigPath = path
                 };
                 Logger.Debug("Config use default");

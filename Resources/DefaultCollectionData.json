@@ -1,0 +1,87 @@
+[
+
+    {
+        "name": "Major",
+        "type": "search",
+        "cover": "JapanSaber.Resources.Major.png",
+        "query": {
+            "category_flag": "1",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "Anime",
+        "type": "search",
+        "cover": "JapanSaber.Resources.Anime.png",
+        "query": {
+            "category_flag": "2",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "VOCALOID",
+        "type": "search",
+        "cover": "JapanSaber.Resources.VOCALOID.png",
+        "query": {
+            "category_flag": "8",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "Indie",
+        "type": "search",
+        "cover": "JapanSaber.Resources.Indie.png",
+        "query": {
+            "category_flag": "64",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "Game",
+        "type": "search",
+        "cover": "JapanSaber.Resources.Game.png",
+        "query": {
+            "category_flag": "4",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "Idle M@ster",
+        "type": "search",
+        "cover": "JapanSaber.Resources.IdleM@ster.png",
+        "query": {
+            "category_flag": "16",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    },
+    {
+        "name": "Tohou",
+        "type": "search",
+        "cover": "JapanSaber.Resources.Tohou.png",
+        "query": {
+            "category_flag": "32",
+            "tags_flag": "999999",
+            "levels_flag": "999999",
+            "tag_none": "true",
+            "orderby": "uploaded_desc"
+        }
+    }
+]
